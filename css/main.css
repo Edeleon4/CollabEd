@@ -190,6 +190,9 @@ button:focus {outline:0;}
   font-weight: bold;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
+#main_content{
+  float: right;
+}
 
 #princeton:hover {
   text-decoration: underline;
