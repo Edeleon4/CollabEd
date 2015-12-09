@@ -10,7 +10,8 @@ var createHomePage = function(plays, menuType){
 
 	var bodyText = "";
 	if (menuType) {
-		bodyText = 	'<div class="row">'+
+		bodyText = '<div id="left_nav_bar"></div>';
+		bodyText += 	'<div class="row">'+
 			        '<ol class="breadcrumb">'+
 			          '<li><a href="index.html">Home</a></li>'+
 			          '<li id="titleCrumb">'+ menuType +'</li>'+

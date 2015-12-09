@@ -1,13 +1,16 @@
 $(document).ready(function(){
-	var bodyText = '<form class="filterform" action="#"><input class="filterinput" type="text"></form>';
-
+	var bodyText = '<form class="filterform" action="#">' +
+						'<div class="input-group">' +
+  							'<input type="text" class="filterinput form-control" placeholder="Topic search" aria-describedby="basic-addon1"></input>'+
+						'</div>' +
+					'</form>';
 	var items = ["australia", "austria", "belgium"]
 
 	function createDemoList(names){
 		listHTML = ""
-		listHTML +=  '<ul id="list">';
+		listHTML +=  '<ul id="list" class="list-group">';
 		for (var i in names){
-			listHTML += '<li><a href="#/' + names[i] + '/">' + names[i] + '</a></li>'
+			listHTML += '<li class="list-group-item"><a href="#/' + names[i] + '/">' + names[i] + '</a></li>'
 		}
 		listHTML += '</ul>';
 		return listHTML;
