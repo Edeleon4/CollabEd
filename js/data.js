@@ -7,11 +7,11 @@ var setData = function(){
 
   obj["subject"]["Algebra"] =
   [{"name":"y = mx +b","type":"offense","info":info1, "id": 0},
-  {"name":"x*y","type":"offense","info":info1}];
+  {"name":"x*y","type":"offense","info":info1, 'id': 0}];
 
   obj["subject"]["Physics"] =
   [{"name":"Motion","type":"science","info":info2, "id": 0},
-  {"name":"p = mv","type":"science","info":info2}]
+  {"name":"p = mv","type":"science","info":info2, 'id': 0}]
 
   for(var prop in obj["subject"]["Algebra"]){
     console.log(prop);

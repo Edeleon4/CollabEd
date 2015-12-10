@@ -1,7 +1,11 @@
 var changeToPlay = function(play){
 
 	if(play !== undefined ){
-    	location.assign("create.html?courseName="+play.name);
+        if (play.name == '+') {
+            location.assign("create.html");
+        } else {
+    	    location.assign("create.html?id="+play.id);
+        }
     	console.log("changetoPlay");
 	}
 }
@@ -40,7 +44,7 @@ if(menuType == undefined){
 		var multiplier = 30;
 		var imgWidth = 5*multiplier;
 		var imgHeight =3*multiplier;
-      
+
         thumbnail += '</div></div></div>';
 		if(i%4 == 0){
 			thumbnail = '<div class="row">'+thumbnail;
@@ -69,7 +73,7 @@ if(menuType == undefined){
 		}
         changeToPlay(play);
     });
-    
+
 }
 
 
