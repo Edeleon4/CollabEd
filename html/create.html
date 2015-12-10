@@ -29,8 +29,16 @@
     tinymce.init({
       selector: 'h1.editable',
       inline: true,
+      plugins: 'autosave',
       toolbar: 'undo redo',
-      menubar: false
+      menubar: false,
+      autosave_retention: '300m',
+      autosave_restore_when_empty: true,
+      content_css: [
+      'https://www.tinymce.com/css/codepen.min.css',
+      ],
+      autosave_prefix: 'editor-{query}-{id}',
+      autosave_interval: '2s'
     });
 
     tinymce.init({
@@ -40,20 +48,23 @@
       plugins: [
         'advlist autolink lists link image charmap print preview anchor',
         'searchreplace visualblocks code fullscreen',
-        'insertdatetime media table contextmenu paste'
+        'insertdatetime media table contextmenu paste autosave'
       ],
       toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
       content_css: [
       'https://fast.fonts.net/cssapi/e6dc9b99-64fe-4292-ad98-6974f93cd2a2.css',
       'https://www.tinymce.com/css/codepen.min.css',
-      ]
+      ],
+      autosave_retention: "300m",
+      autosave_prefix: 'editor-{query}-{id}',
+      autosave_interval: '2s'
     });</script>
  
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Game Plan</title>
+    <title>CollabEd Creation</title>
 
     <!-- Bootstrap -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -93,26 +104,28 @@
 
     <script src="../js/autocompleteFocus.js"></script>
 
-<h1 class="editable editor bigheading">Editable Title</h1>
+    <h1 class="editable editor bigheading">
+    </h1>
 
 <div class="editable editor">
-  <p>
-    This is an editable div element.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt est ac dolor condimentum vitae laoreet ante accumsan. Nullam tincidunt tincidunt ante tempus commodo. Duis rutrum, magna non lacinia tincidunt, risus lacus tempus ipsum, sit amet euismod justo metus ut metus. Donec feugiat urna non leo laoreet in tincidunt lectus gravida. Sed semper ante sed dui consectetur eget commodo eros imperdiet. Mauris magna diam, scelerisque at ornare vel, dignissim ac sem. Fusce id congue lacus. Duis sit amet tellus erat. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus mattis facilisis pretium. In in nibh eu urna ornare semper. Sed imperdiet felis vitae nibh sagittis eu pulvinar metus facilisis. Sed dolor orci, aliquet sagittis auctor id, faucibus at justo.
-  </p>
-  <p>
-    Vestibulum vestibulum velit nec magna lobortis elementum. Ut egestas ultrices tincidunt. Sed vestibulum mi vitae dui interdum eget rhoncus neque faucibus. Ut nec leo tellus. Nunc in metus sit amet purus bibendum dignissim pulvinar quis erat. Quisque vel ultricies nisi. Vestibulum eu ante risus. In ultrices dignissim massa, vel luctus dui consequat quis. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-  </p>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dui nulla, venenatis at porttitor nec, sagittis et urna. Nulla facilisi. Integer bibendum porta urna porta suscipit. In condimentum quam quis justo accumsan molestie. Fusce accumsan vulputate mattis. Sed pharetra volutpat erat at convallis. Etiam tempus, est ac tincidunt scelerisque, mi elit pretium nulla, sit amet viverra nisl enim id lorem. Suspendisse ut enim ullamcorper tellus eleifend sagittis. Aenean mollis turpis eu nisl viverra laoreet. Mauris ante purus, tempor ut viverra eu, vestibulum eget tellus. Morbi vitae dolor tellus. Mauris sodales rutrum nunc, a imperdiet augue egestas vel. Nulla facilisi. Nulla venenatis tristique nisi ut blandit. Phasellus suscipit arcu adipiscing velit posuere nec lacinia urna mattis.
-  </p>
-  <p>
-    Nulla ullamcorper magna sit amet leo porta blandit. Aliquam sed nulla ac arcu vehicula feugiat. Fusce eget accumsan dui. Vestibulum vel leo tellus. Sed dignissim justo in nunc interdum tempor vehicula neque egestas. Fusce lacinia turpis sit amet leo consequat laoreet. Cras nec erat ac purus volutpat consequat. Vestibulum iaculis tincidunt purus eget blandit. Cras consectetur tellus libero. Vestibulum eros orci, volutpat vitae lobortis sit amet, porta quis felis. In a lacus ac neque luctus mollis. Nulla elementum nunc ac ante porttitor id venenatis augue venenatis. In aliquam magna non dolor convallis consequat.
-  </p>
 </div>
 
+<div class="container">
+<a href="#" class="button"><span>✓</span>Save</a>
+</div>
+
+<script>
+    $(window).load(function () {
+        var title = tinymce.get('mce_0');
+        var body = tinymce.get('mce_1');
+        if (title.getContent() == '') {
+            title.setContent('Title (change me!)');
+        }
+        if (body.getContent() == '') {
+            body.setContent('This is the body. Create most of your document here!');
+        }
+    });
+</script>
         
 <!--  <textarea><p style="text-align: center; font-size: 15px;"><img title="TinyMCE Logo" src="https://www.tinymce.com/images/glyph-tinymce@2x.png" alt="TinyMCE Logo" width="110" height="97" />
     </p>
