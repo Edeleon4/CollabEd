@@ -8,7 +8,12 @@ var changeToPlay = function(play){
 console.log("loaded");
 
 var createHomePage = function(plays, menuType){
-	$("#subjectHolder").html("Subject: " + menuType);
+
+if(menuType == undefined){
+	data["current"] = "Algebra";
+	menuType = data["current"];
+}
+	$("#subjectHolder").html("Subject: " + data["current"]);
 	var bodyText = "";
 	if (menuType) {
 		bodyText = '<div class="row">'+

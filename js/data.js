@@ -22,7 +22,8 @@ var setData = function(){
     console.log(prop);
     obj[obj["subject"]["Physics"][prop].name] = obj["subject"]["Physics"][prop];
   }
-
+  
+  obj["current"] = "Algebra";
   return obj;
 }
 
