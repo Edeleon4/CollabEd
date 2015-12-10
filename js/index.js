@@ -1,6 +1,7 @@
 var changeToPlay = function(play){
+
 	if(play !== undefined ){
-    	location.assign("play.html?playName="+play.name);
+    	location.assign("create.html?courseName="+play.name);
     	console.log("changetoPlay");
 	}
 }
@@ -24,11 +25,13 @@ var createHomePage = function(plays, menuType){
 				    '</div>'
 	}
 	var playNames = [];
+	plays.push({"name":"+"});
 	for(var i = 0; i < Math.min(12,plays.length);i++){
 		playNames.push(plays[i].name);
 		var thumbnail = "";
 		thumbnail += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center" ><div class="thumbnail">';
-        thumbnail +='<div class="text playClick" name="'+plays[i].name+'">';
+		//todo link redirect
+        thumbnail +='<div class="text playClick" name="'+plays[i].name+'">'+plays[i].name;
 		var multiplier = 30;
 		var imgWidth = 5*multiplier;
 		var imgHeight =3*multiplier;
@@ -45,10 +48,20 @@ var createHomePage = function(plays, menuType){
 		bodyText +=thumbnail;
 
 	}
+
 	$("#main_content").html(bodyText);
 	$(".playClick").click(function(){
+
 		console.log("playClick");
-    	var play = data[$(this).attr("name")];
+		var name = $(this).attr("name");
+		console.log(name);
+		var play = undefined;
+		if(name == "+"){
+    		play = {"name":"+"};
+
+		} else{
+    		play = data[$(this).attr("name")];
+		}
         changeToPlay(play);
     });
     
