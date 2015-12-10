@@ -7,11 +7,10 @@ var changeToPlay = function(play){
 console.log("loaded");
 
 var createHomePage = function(plays, menuType){
-
+	$("#subjectHolder").html("Subject: " + menuType);
 	var bodyText = "";
 	if (menuType) {
-		bodyText = '<div id="left_nav_bar"></div>';
-		bodyText += 	'<div class="row">'+
+		bodyText = '<div class="row">'+
 			        '<ol class="breadcrumb">'+
 			          '<li><a href="index.html">Home</a></li>'+
 			          '<li id="titleCrumb">'+ menuType +'</li>'+
@@ -24,7 +23,9 @@ var createHomePage = function(plays, menuType){
 				        '</ol>'+
 				    '</div>'
 	}
+	var playNames = [];
 	for(var i = 0; i < Math.min(12,plays.length);i++){
+		playNames.push(plays[i].name);
 		var thumbnail = "";
 		thumbnail += '<div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 text-center" ><div class="thumbnail">';
         thumbnail +='<div class="text playClick" name="'+plays[i].name+'">';
@@ -64,8 +65,9 @@ $(document).ready(function(){
 
     var summedLength = defenseMoves.length+offenseMoves.length;
     var menuType = getUrlVars()["breadCrumb"];
+    data["current"] = menuType;
     if (menuType){
-    	moves = data["subject"][menuType.toLowerCase()]
+    	moves = data["subject"][menuType]
     }else{
     	for(var i = 0;i< summedLength;i++){
 	    	if(i < defenseMoves.length){

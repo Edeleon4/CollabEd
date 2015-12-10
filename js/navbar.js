@@ -1,9 +1,11 @@
 var getMenuList = function(key){
   var ans = "";
-  for(var prop in data["plays"][key]){
-    console.log(key);
-    var playName = data["plays"][key][prop].name;
-    ans = ans +'<li><a href="play.html?subject=' + playName+'">' + playName + '</a></li>';
+  for(var prop in data["subject"][key]){
+    console.log(data["subject"][key]);
+        console.log("here");
+
+    var playName = data["subject"][key][prop].info;
+    ans = ans +'<li><a href="index.html?breadCrumb=' + playName+'">' + playName + '</a></li>';
   }
   if(ans === ""){
     ans = "<h4 style='text-align:center'>Currently you have no favorites</h4>";
@@ -12,14 +14,18 @@ var getMenuList = function(key){
 }
 
 var getSubjectList = function(key){
+          console.log("here");
+
   var ans = "";
-  for(var prop in {"Algebra":0,"Geometry":1}){
+  for(var prop in data["subject"]){
     console.log(key);
-    ans = ans +'<li><a href=""' + prop + '">' + prop + '</a></li>';
+    ans = ans +'<li><a href="index.html?breadCrumb=' + prop+'">' + prop + '</a></li>';
   }
   if(ans === ""){
     ans = "<h4 style='text-align:center'>Currently you have no favorites</h4>";
   }
+          console.log(ans);
+
   return ans;
 }
 
@@ -50,22 +56,13 @@ $(document).ready(function(){
 
             '<ul class="nav navbar-nav">'+
               '<li class="dropdown">'+
-                '<a href="index.html?breadCrumb=Algebra" class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-expanded="false">Subject: Algebra<span class="caret"></span></a>'+
-                '<ul class="dropdown-menu" role="menu">'+getSubjectList("subject")+
+                '<a id="subjectHolder" href="index.html?breadCrumb=Algebra" class="dropdown-toggle disabled" data-toggle="dropdown" role="button" aria-expanded="false">Subject: Algebra<span class="caret"></span></a>'+
+                '<ul class="dropdown-menu" role="menu">'+getSubjectList("Algebra")+
                 '</ul>'+
               '</li>'+
             '</ul>'+
 
-            '<ul class="nav navbar-nav navbar-right">'+
-              '<form id="search" class="navbar-form navbar-left" role="search">'+
-                '<div class="form-group">'+
-                  '<div id="search-field">'+
-                    '<input type="text" class="typeahead form-control" placeholder="Search Play">'+
-                  '</div>'+
-                '</div>'+
-                '<button type="submit" class="btn btn-default">Search</button>'+
-              '</form>'+
-            '</ul>'+
+            
           '</div><!-- /.navbar-collapse -->'+
         '</div><!-- /.container-fluid -->'+
       '</nav>');

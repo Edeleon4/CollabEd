@@ -16,7 +16,13 @@ $(document).ready(function(){
 		return listHTML;
 
 	}
-	var items = ["australia", "austria", "belgium"]
+ 	var courses = data["subject"][data["current"]];
+    var items = [];
+
+
+	for(var i = 0;i< courses.length;i++){
+		items.push(courses[i].name);
+    }
 
 	var itemsText = createDemoList(items)
 	bodyText += itemsText;
